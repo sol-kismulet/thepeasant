@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Peasant</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background: black;
+      overflow: hidden;
+      font-family: serif;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .figure {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 120px;
+      background: radial-gradient(ellipse at center, #333 30%, #000 100%);
+      border-radius: 50% 50% 20% 20% / 40% 40% 10% 10%;
+      z-index: 2;
+      animation: tend 4s ease-in-out infinite alternate;
+    }
+    @keyframes tend {
+      from { transform: translateX(-50%) rotate(-3deg); }
+      to { transform: translateX(-50%) rotate(3deg); }
+    }
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-radial-gradient(circle, white 1px, transparent 2px);
+      background-size: 3px 3px;
+      opacity: 0.05;
+      z-index: 1;
+      animation: drift 100s linear infinite;
+    }
+    @keyframes drift {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10%); }
+    }
+    .whisper {
+      position: absolute;
+      bottom: 8%;
+      width: 100%;
+      text-align: center;
+      font-size: 1.2em;
+      color: white;
+      opacity: 0;
+      animation: appear 3s ease 4s forwards;
+    }
+    @keyframes appear {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="figure"></div>
+  <div class="whisper">you may enter,<br>but only if you see me</div>
+</body>
+</html>
